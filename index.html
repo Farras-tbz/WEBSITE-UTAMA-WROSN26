@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSN Matematika SMA 2026 - @wrosn26</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.25);
+            --sunset-orange: #ff6b35;
+            --sunset-yellow: #f7931e;
+            --ocean-blue: #1e3a5f;
+            --deep-ocean: #0f2027;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Sunset Ocean Background */
+        .sunset-scene {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(to bottom, 
+                #ff9a56 0%,      /* Orange sky top */
+                #ff6b35 20%,     /* Deep orange */
+                #f7931e 35%,     /* Yellow orange */
+                #ffcc5c 45%,     /* Light yellow */
+                #ff6b6b 55%,     /* Pinkish */
+                #4a90e2 65%,     /* Ocean starts */
+                #1e3a5f 85%,     /* Deep ocean */
+                #0f2027 100%     /* Ocean floor */
+            );
+            overflow: hidden;
+        }
+
+        /* Sun */
+        .sun {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at 30% 30%, #ffeb3b, #ff9800, #ff5722);
+            border-radius: 50%;
+            top: 45%;
+            right: 20%;
+            box-shadow: 0 0 60px rgba(255, 152, 0, 0.8), 0 0 100px rgba(255, 87, 34, 0.5);
+            animation: sunPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes sunPulse {
+            0%, 100% { transform: scale(1); opacity: 0.95; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        /* Sun reflection on water */
+        .sun-reflection {
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            background: linear-gradient(to bottom, 
+                rgba(255, 235, 59, 0.4) 0%,
+                rgba(255, 152, 0, 0.2) 50%,
+                transparent 100%
+            );
+            top: 65%;
+            right: calc(20% - 25px);
+            filter: blur(20px);
+            animation: reflectionShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes reflectionShimmer {
+            0%, 100% { opacity: 0.6; transform: scaleY(1); }
+            50% { opacity: 0.8; transform: scaleY(1.1); }
+        }
+
+        /* Mountains */
+        .mountains {
+            position: absolute;
+            bottom: 35%;
+            left: 0;
+            width: 100%;
+            height: 200px;
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .mountain:nth-child(1) {
+            left: -10%;
+            border-left-width: 300px;
+            border-right-width: 300px;
+            border-bottom-width: 200px;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: #2c3e50;
+        }
+
+        .mountain:nth-child(2) {
+            left: 20%;
+            border-left-width: 400px;
+            border-right-width: 400px;
+            border-bottom-width: 280px;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: #1a252f;
+        }
+
+        .mountain:nth-child(3) {
+            right: -5%;
+            border-left-width: 350px;
+            border-right-width: 350px;
+            border-bottom-width: 220px;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: #2c3e50;
+        }
+
+        /* Clouds */
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 100px;
+            opacity: 0.9;
+        }
+
+        .cloud::before {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 100px;
+        }
+
+        .cloud1 {
+            width: 100px;
+            height: 40px;
+            top: 15%;
+            left: -150px;
+            animation: floatCloud 25s infinite linear;
+        }
+
+        .cloud1::before {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            left: 10px;
+        }
+
+        .cloud2 {
+            width: 80px;
+            height: 35px;
+            top: 25%;
+            left: -120px;
+            animation: floatCloud 30s infinite linear;
+            animation-delay: 5s;
+        }
+
+        .cloud2::before {
+            width: 60px;
+            height: 40px;
+            top: -20px;
+            right: 15px;
+        }
+
+        .cloud3 {
+            width: 120px;
+            height: 45px;
+            top: 10%;
+            left: -180px;
+            animation: floatCloud 35s infinite linear;
+            animation-delay: 10s;
+        }
+
+        .cloud3::before {
+            width: 70px;
+            height: 60px;
+            top: -30px;
+            left: 20px;
+        }
+
+        .cloud4 {
+            width: 90px;
+            height: 38px;
+            top: 30%;
+            left: -140px;
+            animation: floatCloud 28s infinite linear;
+            animation-delay: 15s;
+        }
+
+        .cloud4::before {
+            width: 55px;
+            height: 45px;
+            top: -22px;
+            right: 10px;
+        }
+
+        @keyframes floatCloud {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+
+        /* Ocean waves */
+        .waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35%;
+            background: linear-gradient(to bottom, rgba(30, 58, 95, 0.6), rgba(15, 32, 39, 0.9));
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: 50% 100%;
+            animation: waveMove 10s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            bottom: 20px;
+            opacity: 0.5;
+            animation: waveMove 15s linear infinite reverse;
+        }
+
+        .wave:nth-child(3) {
+            bottom: 40px;
+            opacity: 0.3;
+            animation: waveMove 20s linear infinite;
+        }
+
+        @keyframes waveMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Birds */
+        .bird {
+            position: absolute;
+            opacity: 0.8;
+            animation: fly 20s linear infinite;
+        }
+
+        .bird::before {
+            content: 'v';
+            font-size: 20px;
+            color: rgba(0, 0, 0, 0.6);
+            font-weight: bold;
+        }
+
+        .bird1 {
+            top: 20%;
+            left: -50px;
+            animation-delay: 0s;
+        }
+
+        .bird2 {
+            top: 25%;
+            left: -50px;
+            animation-delay: 3s;
+        }
+
+        .bird3 {
+            top: 18%;
+            left: -50px;
+            animation-delay: 6s;
+        }
+
+        @keyframes fly {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(25vw) translateY(-10px); }
+            50% { transform: translateX(50vw) translateY(5px); }
+            75% { transform: translateX(75vw) translateY(-5px); }
+            100% { transform: translateX(calc(100vw + 50px)) translateY(0); }
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Top Section */
+        .top-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+            align-items: start;
+        }
+
+        /* Corner Cards */
+        .corner-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            color: white;
+            display: block;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .corner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .corner-card:hover::before {
+            left: 100%;
+        }
+
+        .corner-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .corner-card i {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffeb3b, #ff9800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .corner-card h3 {
+            font-size: 1.1em;
+            font-weight: 600;
+            line-height: 1.4;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Center Header - Silabus */
+        .center-header {
+            text-align: center;
+            padding: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.4s;
+            color: white;
+            display: block;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .center-header:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .center-header h1 {
+            font-size: 1.6em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #ffeb3b 50%, #ff9800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .center-header .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1em;
+            letter-spacing: 3px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Center Content - Main Title */
+        .center-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .main-title {
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, #ffffff 0%, #ffeb3b 50%, #ff9800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 3s ease-in-out infinite alternate;
+            transition: transform 0.3s;
+            line-height: 1.3;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .main-title:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 152, 0, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(255, 235, 59, 0.8)); }
+        }
+
+        .handle {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Bottom Section with Bubble Cards */
+        .bottom-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            position: relative;
+            min-height: 300px;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* Bubble Cards - Main Options */
+        .bubble-card {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+        }
+
+        .bubble-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .bubble-card:hover::before {
+            opacity: 1;
+        }
+
+        .bubble-card.tryout-bubble {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(247, 147, 30, 0.4));
+            border-color: rgba(255, 107, 53, 0.6);
+        }
+
+        .bubble-card.tryout-bubble:hover {
+            transform: scale(1.1) translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.6);
+            border-color: #ff6b35;
+        }
+
+        .bubble-card.detail-bubble {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(76, 29, 149, 0.4));
+            border-color: rgba(124, 58, 237, 0.6);
+        }
+
+        .bubble-card.detail-bubble:hover {
+            transform: scale(1.1) translateY(-10px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.6);
+            border-color: #7c3aed;
+        }
+
+        .bubble-card.pelatihan-bubble {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 200, 100, 0.4));
+            border-color: rgba(0, 255, 136, 0.6);
+        }
+
+        .bubble-card.pelatihan-bubble:hover {
+            transform: scale(1.1) translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.6);
+            border-color: #00ff88;
+        }
+
+        .bubble-card i {
+            font-size: 3em;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .bubble-card:hover i {
+            transform: scale(1.2);
+        }
+
+        .bubble-card h2 {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .bubble-card p {
+            font-size: 0.8em;
+            opacity: 0.95;
+            text-align: center;
+            padding: 0 30px;
+            line-height: 1.4;
+        }
+
+        .bubble-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .tryout-bubble .bubble-glow {
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.4) 0%, transparent 70%);
+        }
+
+        .detail-bubble .bubble-glow {
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, transparent 70%);
+        }
+
+        .pelatihan-bubble .bubble-glow {
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.4) 0%, transparent 70%);
+        }
+
+        .bubble-card:hover .bubble-glow {
+            opacity: 1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* Page Sections (Full Screen) */
+        .page-section {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+            z-index: 100;
+            overflow-y: auto;
+            animation: fadeIn 0.5s;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            border: 2px solid #ff9800;
+            color: #ff9800;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            align-self: flex-start;
+        }
+
+        .back-btn:hover {
+            background: #ff9800;
+            color: #0f172a;
+            transform: translateX(-5px);
+        }
+
+        /* Pricing Page Styles */
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .pricing-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ff9800, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pricing-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1em;
+        }
+
+        .simple-price-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .simple-price-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .simple-price-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .simple-price-item:hover::before {
+            left: 100%;
+        }
+
+        .simple-price-item:hover {
+            transform: translateX(10px);
+            border-color: rgba(255, 152, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .simple-price-item.combo {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(255, 107, 53, 0.1));
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+
+        .price-name {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+        }
+
+        .price-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #ff9800;
+        }
+
+        .simple-price-item.combo .price-value {
+            color: #ff6b35;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ff9800, transparent);
+        }
+
+        .section-divider span {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+            padding: 0 20px;
+            color: #ff9800;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .pricing-note-simple {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95em;
+        }
+
+        .payment-section-simple {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .payment-title-simple {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            color: #ff9800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .payment-icons-row {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 10px;
+        }
+
+        .payment-icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85em;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .payment-icon-box:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .payment-icon-box.ovo { 
+            background: linear-gradient(135deg, #4c3494, #6b5ce7);
+            color: white;
+        }
+        .payment-icon-box.dana { 
+            background: linear-gradient(135deg, #008ceb, #00a8ff);
+            color: white;
+        }
+        .payment-icon-box.gopay { 
+            background: linear-gradient(135deg, #00aec5, #00d4e0);
+            color: white;
+        }
+
+        .contact-section-simple {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .contact-section-simple p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-btn-simple {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .contact-btn-simple:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .thank-you-simple {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 2em;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, #ff9800, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Materi Page */
+        .materi-bubbles {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .materi-bubble {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.4s;
+            color: white;
+        }
+
+        .materi-bubble:hover {
+            transform: scale(1.1);
+            border-color: #ff9800;
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.3);
+        }
+
+        .materi-bubble i {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .materi-bubble span {
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        /* Silabus Styles */
+        .silabus-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .silabus-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .silabus-item:hover {
+            border-color: #ff9800;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.2);
+        }
+
+        .silabus-item h3 {
+            color: #ff9800;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .silabus-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .silabus-item li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .silabus-item li:last-child {
+            border-bottom: none;
+        }
+
+        .silabus-item li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #ff9800;
+            font-weight: bold;
+        }
+
+        .silabus-item li strong {
+            color: #ff6b35;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Jadwal Styles */
+        .timeline-table {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            font-size: 0.95em;
+        }
+
+        .schedule-table thead {
+            background: linear-gradient(135deg, #ff9800, #ff6b35);
+        }
+
+        .schedule-table th {
+            padding: 15px;
+            text-align: left;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85em;
+        }
+
+        .schedule-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            vertical-align: top;
+        }
+
+        .schedule-table tr:hover {
+            background: rgba(255, 152, 0, 0.05);
+        }
+
+        .schedule-table tr.highlight-row {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #ff9800;
+        }
+
+        .schedule-table tr.highlight-row td:first-child {
+            color: #ff9800;
+            font-weight: bold;
+        }
+
+        .schedule-table tr.final-row {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.2), rgba(255, 107, 53, 0.2));
+            border-left: 4px solid #7c3aed;
+        }
+
+        .schedule-table tr.final-row td {
+            color: white;
+            font-weight: 600;
+        }
+
+        .schedule-table a {
+            color: #ff9800;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .schedule-table a:hover {
+            color: #ff6b35;
+            text-decoration: underline;
+        }
+
+        .jadwal-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #ff9800;
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Coming Soon Display */
+        .coming-soon-display {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 400px;
+        }
+
+        .coming-soon-icon-large {
+            font-size: 8em;
+            margin-bottom: 30px;
+            animation: float-icon 3s ease-in-out infinite;
+        }
+
+        @keyframes float-icon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .coming-soon-title-large {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff9800, #ff6b35, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-text 3s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradient-text {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .coming-soon-desc {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            border: 2px solid #ff9800;
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s;
+            box-shadow: 0 25px 50px rgba(255, 152, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            color: #ff9800;
+        }
+
+        .modal-title {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Social Modal */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 18px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .social-btn.whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+        }
+
+        .social-btn.tiktok {
+            background: linear-gradient(135deg, #000000, #25f4ee, #fe2c55);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .bottom-section {
+                gap: 30px;
+            }
+
+            .bubble-card {
+                width: 200px;
+                height: 200px;
+            }
+
+            .bubble-card h2 {
+                font-size: 1em;
+            }
+
+            .top-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .center-header h1 {
+                font-size: 1.3em;
+            }
+
+            .main-title {
+                font-size: 1.6em;
+            }
+
+            .silabus-content {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-table {
+                font-size: 0.8em;
+            }
+
+            .coming-soon-title-large {
+                font-size: 2.5em;
+            }
+
+            .simple-price-item {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .materi-bubbles {
+                gap: 15px;
+            }
+
+            .materi-bubble {
+                width: 120px;
+                height: 120px;
+            }
+
+            .payment-icons-row {
+                gap: 15px;
+            }
+
+            .payment-icon-box {
+                width: 60px;
+                height: 60px;
+                font-size: 0.7em;
+            }
+
+            .simple-price-item {
+                padding: 20px;
+            }
+
+            .price-name {
+                font-size: 0.95em;
+            }
+
+            .price-value {
+                font-size: 1.3em;
+            }
+
+            .sun {
+                width: 100px;
+                height: 100px;
+                top: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sunset Scene Background -->
+    <div class="sunset-scene">
+        <!-- Sun -->
+        <div class="sun"></div>
+        <div class="sun-reflection"></div>
+        
+        <!-- Mountains -->
+        <div class="mountains">
+            <div class="mountain"></div>
+            <div class="mountain"></div>
+            <div class="mountain"></div>
+        </div>
+        
+        <!-- Clouds -->
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="cloud cloud4"></div>
+        
+        <!-- Birds -->
+        <div class="bird bird1"></div>
+        <div class="bird bird2"></div>
+        <div class="bird bird3"></div>
+        
+        <!-- Ocean Waves -->
+        <div class="waves">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+    </div>
+
+    <!-- HOME PAGE -->
+    <div id="home-page" class="main-container">
+        <!-- Top Section -->
+        <div class="top-section">
+            <!-- Top Left: Materi OSN -->
+            <div class="corner-card" onclick="showPage('materi')">
+                <i class="fas fa-book-open"></i>
+                <h3>Materi OSN</h3>
+            </div>
+
+            <!-- Top Center: Silabus -->
+            <div class="center-header" onclick="showPage('silabus')">
+                <h1>Silabus Olimpiade Sains Nasional (OSN) Bidang Matematika Tahun 2026</h1>
+                <p class="subtitle">Kurikulum Lengkap & Struktur Kompetisi</p>
+            </div>
+
+            <!-- Top Right: Jadwal OSN -->
+            <div class="corner-card" onclick="showPage('jadwal')">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Jadwal OSN 2026</h3>
+            </div>
+        </div>
+
+        <!-- Center Content -->
+        <div class="center-content">
+            <h1 class="main-title" onclick="openSocialModal()">Website Utama<br>Pelatihan Intensif & Try Out</h1>
+            <p class="handle">@wrosn26</p>
+        </div>
+
+        <!-- Bottom Section with Bubble Cards -->
+        <div class="bottom-section">
+            <!-- Try Out Bubble -->
+            <a href="https://farras-tbz.github.io/TRYOUT-wrosn26/" target="_blank" class="bubble-card tryout-bubble">
+                <div class="bubble-glow"></div>
+                <i class="fas fa-pencil-alt"></i>
+                <h2>Try Out</h2>
+                <p>Latihan Soal OSN</p>
+            </a>
+
+            <!-- Detail Harga Bubble -->
+            <div class="bubble-card detail-bubble" onclick="showPage('detail-harga')">
+                <div class="bubble-glow"></div>
+                <i class="fas fa-tags"></i>
+                <h2>Detail Harga<br>Pelatihan Intensif & Try Out</h2>
+                <p>Daftar Harga Lengkap</p>
+            </div>
+
+            <!-- Pelatihan Intensif Bubble -->
+            <a href="https://farras-tbz.github.io/Pelatihan-Intensif-Web-wrosn26/" target="_blank" class="bubble-card pelatihan-bubble">
+                <div class="bubble-glow"></div>
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h2>Pelatihan<br>Intensif</h2>
+                <p>Program Belajar Bulanan</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- DETAIL HARGA PAGE -->
+    <div id="detail-harga-page" class="page-section">
+        <div class="page-content">
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </button>
+
+            <div class="pricing-header">
+                <h2>📋 Detail Harga</h2>
+                <p>Pelatihan Intensif & Try Out</p>
+            </div>
+
+            <!-- Bagian Try Out -->
+            <div class="simple-price-list">
+                <div class="simple-price-item">
+                    <span class="price-name">Sekali Try Out</span>
+                    <span class="price-value">Rp10.000</span>
+                </div>
+                <div class="simple-price-item">
+                    <span class="price-name">Dua Kali Try Out</span>
+                    <span class="price-value">Rp20.000</span>
+                </div>
+                <div class="simple-price-item">
+                    <span class="price-name">Tiga Kali Try Out</span>
+                    <span class="price-value">Rp30.000</span>
+                </div>
+                <div class="simple-price-item">
+                    <span class="price-name">Empat Kali Try Out</span>
+                    <span class="price-value">Rp40.000</span>
+                </div>
+                <div class="simple-price-item">
+                    <span class="price-name">Lima Kali Try Out</span>
+                    <span class="price-value">Rp50.000</span>
+                </div>
+            </div>
+
+            <div class="section-divider">
+                <span>Paket Combo</span>
+            </div>
+
+            <!-- Bagian Pelatihan Intensif -->
+            <div class="simple-price-list">
+                <div class="simple-price-item combo">
+                    <span class="price-name">Pelatihan Intensif</span>
+                    <span class="price-value">Rp35.000/bulan</span>
+                </div>
+                <div class="simple-price-item combo">
+                    <span class="price-name">Pelatihan Intensif + Sekali Try Out</span>
+                    <span class="price-value">Rp40.000/bulan</span>
+                </div>
+                <div class="simple-price-item combo">
+                    <span class="price-name">Pelatihan Intensif + Dua Kali Try Out</span>
+                    <span class="price-value">Rp45.000/bulan</span>
+                </div>
+                <div class="simple-price-item combo">
+                    <span class="price-name">Pelatihan Intensif + Tiga Kali Try Out</span>
+                    <span class="price-value">Rp50.000/bulan</span>
+                </div>
+                <div class="simple-price-item combo">
+                    <span class="price-name">Pelatihan Intensif + Empat Kali Try Out</span>
+                    <span class="price-value">Rp55.000/bulan</span>
+                </div>
+                <div class="simple-price-item combo">
+                    <span class="price-name">Pelatihan Intensif + Lima Kali Try Out</span>
+                    <span class="price-value">Rp60.000/bulan</span>
+                </div>
+            </div>
+
+            <div class="pricing-note-simple">
+                <strong>Catatan:</strong> Try Out dibayar per Try Out. Setiap try out dipastikan soalnya berbeda dengan try out lainnya, dan try out sudah sesuai dengan panduan resmi dari Puspresnas (10 pilihan ganda dan 10 isian singkat).<br><br>
+                Pelatihan Intensif dibayar per bulan. Untuk harga try out dalam paket combo, harga try out menjadi Rp5.000 per try out (hemat Rp5.000!).
+            </div>
+
+            <div class="payment-section-simple">
+                <div class="payment-title-simple">Metode Pembayaran</div>
+                <div class="payment-icons-row">
+                    <div class="payment-icon-box ovo">OVO</div>
+                    <div class="payment-icon-box dana">DANA</div>
+                    <div class="payment-icon-box gopay">GoPay</div>
+                </div>
+            </div>
+
+            <div class="contact-section-simple">
+                <p>Untuk mendaftar, silakan kirim pesan langsung (DM) melalui WhatsApp atau chat di grup WA!</p>
+                <a href="https://chat.whatsapp.com/HI2UzO7TscHIuRB2HdF6M3" target="_blank" class="contact-btn-simple">
+                    <i class="fab fa-whatsapp"></i> Hubungi Kami
+                </a>
+            </div>
+
+            <div class="thank-you-simple">Terima Kasih!</div>
+        </div>
+    </div>
+
+    <!-- MATERI OSN PAGE -->
+    <div id="materi-page" class="page-section">
+        <div class="page-content">
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </button>
+
+            <div class="pricing-header">
+                <h2>📚 Materi OSN</h2>
+                <p>Pilih bidang materi yang ingin dipelajari</p>
+            </div>
+
+            <div class="materi-bubbles">
+                <div class="materi-bubble" onclick="showComingSoon('Aljabar')">
+                    <i class="fas fa-square-root-alt"></i>
+                    <span>Aljabar</span>
+                </div>
+                <div class="materi-bubble" onclick="showComingSoon('Geometri')">
+                    <i class="fas fa-shapes"></i>
+                    <span>Geometri</span>
+                </div>
+                <div class="materi-bubble" onclick="showComingSoon('Kombinatorika')">
+                    <i class="fas fa-calculator"></i>
+                    <span>Kombinatorika</span>
+                </div>
+                <div class="materi-bubble" onclick="showComingSoon('Teori Bilangan')">
+                    <i class="fas fa-sort-numeric-up"></i>
+                    <span>Teori Bilangan</span>
+                </div>
+            </div>
+
+            <!-- Coming Soon Display Area -->
+            <div id="materi-coming-soon" class="coming-soon-display" style="display: none;">
+                <div class="coming-soon-icon-large">🚀</div>
+                <h1 class="coming-soon-title-large">COMING SOON!</h1>
+                <p class="coming-soon-desc" id="materi-coming-soon-text">Materi sedang dalam persiapan. Nantikan segera!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SILABUS PAGE -->
+    <div id="silabus-page" class="page-section">
+        <div class="page-content">
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </button>
+
+            <div class="pricing-header">
+                <h2>📋 Silabus OSN Matematika 2026</h2>
+                <p>Kurikulum lengkap sesuai standar Puspresnas</p>
+            </div>
+
+            <div class="silabus-content">
+                <!-- Aljabar -->
+                <div class="silabus-item">
+                    <h3>🧮 Aljabar</h3>
+                    <ul>
+                        <li><strong>Ketaksamaan:</strong> Kuadrat bilangan real, HM-GM-AM-QM, Rearrangement, Cauchy-Schwarz, Jensen</li>
+                        <li><strong>Identitas & Substitusi:</strong> Identitas dasar dan substitusi aljabar dalam ketaksamaan</li>
+                        <li><strong>Barisan Bilangan:</strong> Pola barisan, induksi matematika, barisan rekursif linear (Fibonacci & Lucas), periode barisan</li>
+                        <li><strong>Polinom:</strong> Algoritma pembagian, akar polinom, persamaan polinom dasar</li>
+                        <li><strong>Persamaan Fungsi:</strong> Cauchy, Jensen, d'Alembert pada bilangan real</li>
+                        <li><strong>Sifat Fungsi:</strong> Injektif, surjektif, bijektif, monoton, terbatas, konveks & konkaf</li>
+                    </ul>
+                </div>
+
+                <!-- Geometri -->
+                <div class="silabus-item">
+                    <h3>📐 Geometri</h3>
+                    <ul>
+                        <li><strong>Angle Chasing:</strong> Teknik pencarian sudut dan segiempat tali busur</li>
+                        <li><strong>Segitiga:</strong> Garis berat, garis sumbu & lingkaran luar, garis tinggi & segiempat talibusur</li>
+                        <li><strong>Garis Bagi:</strong> Garis bagi dalam & luar, lingkaran singgung dalam & luar</li>
+                        <li><strong>Isogonal Konjugat:</strong> Titik isogonal dan konjugat dalam segitiga</li>
+                        <li><strong>Lingkaran:</strong> Titik kuasa, sumbu radikal & pusat radikal</li>
+                        <li><strong>Teorema Klasik:</strong> Persamaan Ptolemy dan garis Simpson</li>
+                    </ul>
+                </div>
+
+                <!-- Kombinatorika -->
+                <div class="silabus-item">
+                    <h3>🔢 Kombinatorika</h3>
+                    <ul>
+                        <li><strong>Basic Counting:</strong> Aturan penjumlahan & perkalian, permutasi & kombinasi, permutasi siklis, string tertentu</li>
+                        <li><strong>Bilangan Kombinasi:</strong> Distribusi, partisi, Teorema De Moivre, Stirling Number</li>
+                        <li><strong>Prinsip:</strong> Injeksi dan bijeksi dalam pembuktian kombinatorial</li>
+                        <li><strong>Koefisien Binom & Multinom:</strong> Binom Newton & Multinom, identitas bilangan kombinasi</li>
+                        <li><strong>Segitiga Pascal:</strong> Identitas Chu Shih-Chieh dan aplikasinya</li>
+                        <li><strong>Teori Peluang:</strong> Kejadian saling lepas & bebas, peluang bersyarat, Aturan Bayes, sebaran peluang</li>
+                        <li><strong>Teori Himpunan:</strong> Himpunan kosong & semesta, prinsip komplemen, operasi himpunan, Hukum De Morgan</li>
+                    </ul>
+                </div>
+
+                <!-- Teori Bilangan -->
+                <div class="silabus-item">
+                    <h3>🔍 Teori Bilangan</h3>
+                    <ul>
+                        <li><strong>Keterbagian:</strong> Dasar-dasar, algoritma pembagian, FPB & KPK, bilangan prima</li>
+                        <li><strong>Persamaan Diophantine:</strong> Penggunaan keterbagilan dalam persamaan sederhana</li>
+                        <li><strong>Kongruensi Modulo:</strong> Dasar-dasar kongruensi, residu lengkap & struktur residu</li>
+                        <li><strong>Teorema:</strong> Wilson, Fermat Kecil, Euler</li>
+                        <li><strong>Order & Akar Primitif:</strong> Konsep order modulo n dan akar primitif</li>
+                        <li><strong>Persamaan Kongruensi:</strong> Linier, Teorema Sisa China, kuadrat, residu kuadratik</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JADWAL PAGE -->
+    <div id="jadwal-page" class="page-section">
+        <div class="page-content">
+            <button class="back-btn" onclick="showPage('home')">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </button>
+
+            <div class="pricing-header">
+                <h2>📅 Jadwal OSN 2026</h2>
+                <p>Timeline kompetisi dari tingkat satuan pendidikan hingga final</p>
+            </div>
+
+            <div class="timeline-table">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Tahap</th>
+                            <th>Tempat</th>
+                            <th>Penanggung Jawab</th>
+                            <th>Waktu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Seleksi tingkat satuan pendidikan</td>
+                            <td>Satuan pendidikan</td>
+                            <td>Kepala Satuan Pendidikan</td>
+                            <td>Januari s.d Februari 2026</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Uji Coba Seleksi tingkat kab/kota (OSN-K)</td>
+                            <td>Satuan pendidikan</td>
+                            <td>Puspresnas, satuan pendidikan dan Dinas Pendidikan Provinsi</td>
+                            <td>6 s.d. 7 Mei 2026</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Seleksi tingkat kab/kota (OSN-K)</td>
+                            <td>Satuan pendidikan</td>
+                            <td>Puspresnas, satuan pendidikan dan Dinas Pendidikan Provinsi</td>
+                            <td>18 s.d 19 Juni 2026</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>+</td>
+                            <td>Pengumuman OSN-K</td>
+                            <td><a href="https://pusatprestasinational.kemendikdasmen.go.id" target="_blank">Website Puspresnas</a></td>
+                            <td>Puspresnas, Dinas Pendidikan Provinsi</td>
+                            <td>3 Juli 2026</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Technical Meeting dan Uji Coba Seleksi tingkat provinsi (OSN-P)</td>
+                            <td>Tempat ditentukan Dinas Pendidikan Provinsi</td>
+                            <td>Puspresnas, Dinas Pendidikan Provinsi</td>
+                            <td>14 s.d. 15 Juli 2026</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Seleksi tingkat provinsi (OSN-P)</td>
+                            <td>Tempat ditentukan Dinas Pendidikan Provinsi</td>
+                            <td>Puspresnas dan Dinas Pendidikan Provinsi</td>
+                            <td>27 s.d. 29 Juli 2026</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>6</td>
+                            <td>Pengumuman OSN-P</td>
+                            <td><a href="https://pusatprestasinational.kemendikdasmen.go.id" target="_blank">Website Puspresnas</a></td>
+                            <td>Puspresnas, Dinas Pendidikan Provinsi</td>
+                            <td>5 Agustus 2026</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>OSN tahap Semifinal</td>
+                            <td>Tempat ditentukan Dinas Pendidikan Provinsi</td>
+                            <td>Puspresnas, Dinas Pendidikan Provinsi</td>
+                            <td>12 Agustus 2026</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>8</td>
+                            <td>Pengumuman hasil Semifinal</td>
+                            <td><a href="https://pusatprestasinational.kemendikdasmen.go.id" target="_blank">Website Puspresnas</a></td>
+                            <td>Puspresnas, Dinas Pendidikan Provinsi</td>
+                            <td>18 Agustus 2026</td>
+                        </tr>
+                        <tr class="final-row">
+                            <td>9</td>
+                            <td>Seleksi OSN tahap Final</td>
+                            <td>Tempat ditentukan Puspresnas</td>
+                            <td>Puspresnas</td>
+                            <td>14 s.d 20 September 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="jadwal-info">
+                <p><strong>📌 Catatan:</strong> Jadwal dapat berubah sesuai kebijakan Puspresnas. Pantau terus website resmi untuk informasi terbaru.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Modal -->
+    <div id="socialModal" class="modal-overlay" onclick="closeSocialModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeSocialModal()">&times;</button>
+            <h2 class="modal-title">🎯 Bergabung dengan Komunitas!</h2>
+            <div class="social-links">
+                <a href="https://chat.whatsapp.com/HI2UzO7TscHIuRB2HdF6M3" target="_blank" class="social-btn whatsapp">
+                    <i class="fab fa-whatsapp" style="font-size: 1.5em;"></i>
+                    <span>Klik untuk bergabung dengan grup pelatihan intensif!</span>
+                </a>
+                <a href="https://tiktok.com/@wrosn26" target="_blank" class="social-btn tiktok">
+                    <i class="fab fa-tiktok" style="font-size: 1.5em;"></i>
+                    <span>Klik untuk melihat TikTok @wrosn26!</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation Functions
+        function showPage(pageId) {
+            document.getElementById('home-page').style.display = 'none';
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            if (pageId === 'home') {
+                document.getElementById('home-page').style.display = 'flex';
+                const materiComingSoon = document.getElementById('materi-coming-soon');
+                if (materiComingSoon) {
+                    materiComingSoon.style.display = 'none';
+                }
+            } else {
+                const targetPage = document.getElementById(pageId + '-page');
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showComingSoon(materiName) {
+            const comingSoonDiv = document.getElementById('materi-coming-soon');
+            const comingSoonText = document.getElementById('materi-coming-soon-text');
+            
+            if (comingSoonText && comingSoonDiv) {
+                comingSoonText.textContent = 'Materi ' + materiName + ' sedang dalam persiapan. Nantikan segera!';
+                comingSoonDiv.style.display = 'flex';
+                
+                setTimeout(() => {
+                    comingSoonDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+        }
+
+        // Modal Functions
+        function openSocialModal() {
+            document.getElementById('socialModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSocialModal(event) {
+            if (!event || event.target.id === 'socialModal' || event.target.classList.contains('close-btn')) {
+                document.getElementById('socialModal').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Keyboard events
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeSocialModal();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.simple-price-item').forEach((item, index) => {
+                item.style.animationDelay = (index * 0.1) + 's';
+            });
+        });
+    </script>
+</body>
+</html>
