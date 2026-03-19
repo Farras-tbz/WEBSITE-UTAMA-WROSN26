@@ -21,6 +21,8 @@
             --sunset-yellow: #f7931e;
             --ocean-blue: #1e3a5f;
             --deep-ocean: #0f2027;
+            --neon-green: #00ff88;
+            --neon-purple: #7c3aed;
         }
 
         body {
@@ -667,10 +669,61 @@
             transform: translateX(-5px);
         }
 
-        /* Pricing Page Styles */
+        /* NEW PRICING PAGE STYLES - MARKETING OPTIMIZED */
+        .urgency-banner {
+            background: linear-gradient(135deg, #ff6b35, #ff9800);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+            animation: urgentPulse 2s infinite;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.95em;
+        }
+
+        @keyframes urgentPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4); }
+            50% { transform: scale(1.02); box-shadow: 0 8px 30px rgba(255, 107, 53, 0.6); }
+        }
+
+        .social-proof-bar {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 15px;
+            padding: 15px 25px;
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-proof-bar i {
+            color: #00ff88;
+            font-size: 1.5em;
+        }
+
+        .social-proof-bar span {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95em;
+        }
+
+        .social-proof-bar strong {
+            color: #00ff88;
+            font-size: 1.2em;
+        }
+
         .pricing-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .pricing-header h2 {
@@ -687,111 +740,385 @@
             font-size: 1.1em;
         }
 
-        .simple-price-list {
-            display: flex;
-            flex-direction: column;
+        /* Try Out Section - Anchoring Effect */
+        .section-label {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35, #ff9800);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tryout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
-        .simple-price-item {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 25px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.4s;
+        .tryout-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
             position: relative;
-            overflow: hidden;
+            transition: all 0.4s;
         }
 
-        .simple-price-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .simple-price-item:hover::before {
-            left: 100%;
-        }
-
-        .simple-price-item:hover {
-            transform: translateX(10px);
+        .tryout-card:hover {
+            transform: translateY(-5px);
             border-color: rgba(255, 152, 0, 0.5);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .simple-price-item.combo {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(255, 107, 53, 0.1));
-            border-color: rgba(124, 58, 237, 0.3);
+        .tryout-card.popular {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(247, 147, 30, 0.2));
+            border-color: #ff6b35;
+            transform: scale(1.05);
         }
 
-        .price-name {
-            font-size: 1.1em;
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 500;
-        }
-
-        .price-value {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5em;
-            font-weight: 700;
-            color: #ff9800;
-        }
-
-        .simple-price-item.combo .price-value {
-            color: #ff6b35;
-        }
-
-        .section-divider {
-            text-align: center;
-            margin: 40px 0;
-            position: relative;
-        }
-
-        .section-divider::before {
-            content: '';
+        .tryout-card.popular::before {
+            content: 'PALING LARIS';
             position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #ff9800, transparent);
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff6b35, #ff9800);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
+            white-space: nowrap;
         }
 
-        .section-divider span {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
-            padding: 0 20px;
-            color: #ff9800;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
+        .tryout-card.best-value {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 200, 100, 0.15));
+            border-color: #00ff88;
+            transform: scale(1.05);
         }
 
-        .pricing-note-simple {
-            background: rgba(255, 152, 0, 0.1);
-            border-left: 4px solid #ff9800;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 40px;
-            line-height: 1.8;
+        .tryout-card.best-value::before {
+            content: 'HEMAT 50%';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: #0f172a;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .tryout-count {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 10px;
             color: rgba(255, 255, 255, 0.9);
+        }
+
+        .price-display {
+            margin: 15px 0;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .current-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            font-weight: 800;
+            color: #ff9800;
+            line-height: 1;
+        }
+
+        .tryout-card.best-value .current-price {
+            color: #00ff88;
+        }
+
+        .per-session {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+
+        .savings-badge {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* Combo Section - Value Stacking */
+        .combo-section {
+            margin-bottom: 40px;
+        }
+
+        .combo-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .combo-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8em;
+            background: linear-gradient(135deg, #7c3aed, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .combo-subtitle {
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.95em;
         }
 
+        .combo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .combo-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            position: relative;
+            transition: all 0.4s;
+            overflow: hidden;
+        }
+
+        .combo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7c3aed, #ff6b35);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .combo-card:hover::before {
+            opacity: 1;
+        }
+
+        .combo-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(124, 58, 237, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .combo-card.featured {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(255, 107, 53, 0.15));
+            border-color: rgba(124, 58, 237, 0.5);
+            transform: scale(1.03);
+        }
+
+        .combo-card.featured::after {
+            content: '🔥 BEST VALUE';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: linear-gradient(135deg, #ff6b35, #ff9800);
+            color: white;
+            padding: 8px 40px;
+            font-size: 0.75em;
+            font-weight: 700;
+            transform: rotate(45deg);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+
+        .combo-name {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .value-breakdown {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 0.85em;
+        }
+
+        .value-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .value-row:last-child {
+            margin-bottom: 0;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .combo-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .combo-original {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.1em;
+        }
+
+        .combo-current {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2em;
+            font-weight: 800;
+            color: #ff9800;
+        }
+
+        .combo-card.featured .combo-current {
+            background: linear-gradient(135deg, #ff9800, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .combo-period {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+        }
+
+        .you-save {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 200, 100, 0.2));
+            color: #00ff88;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .features-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ff9800, #ff6b35);
+            color: white;
+            font-weight: 700;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .combo-card.featured .cta-button {
+            background: linear-gradient(135deg, #7c3aed, #ff6b35);
+            animation: ctaPulse 2s infinite;
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(124, 58, 237, 0); }
+        }
+
+        /* Guarantee Section */
+        .guarantee-box {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 200, 100, 0.1));
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .guarantee-icon {
+            font-size: 3em;
+            color: #00ff88;
+        }
+
+        .guarantee-text {
+            text-align: left;
+        }
+
+        .guarantee-title {
+            font-weight: 700;
+            font-size: 1.2em;
+            color: #00ff88;
+            margin-bottom: 5px;
+        }
+
+        .guarantee-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            max-width: 400px;
+        }
+
+        /* Payment Section */
         .payment-section-simple {
             text-align: center;
             margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
         }
 
         .payment-title-simple {
@@ -807,18 +1134,19 @@
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .payment-icon-box {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 0.85em;
+            font-size: 0.9em;
             transition: all 0.3s;
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         }
@@ -840,46 +1168,110 @@
             color: white;
         }
 
+        .secure-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85em;
+        }
+
+        .secure-badge i {
+            color: #00ff88;
+        }
+
+        /* Contact Section */
         .contact-section-simple {
             text-align: center;
-            padding: 30px;
-            background: rgba(0, 255, 136, 0.1);
-            border-radius: 20px;
-            border: 1px solid rgba(0, 255, 136, 0.3);
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 200, 100, 0.1));
+            border-radius: 25px;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section-simple::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,255,136,0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
         }
 
         .contact-section-simple p {
-            margin-bottom: 20px;
-            font-size: 1.1em;
-            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 600;
         }
 
         .contact-btn-simple {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 15px 35px;
+            gap: 12px;
+            padding: 18px 40px;
             background: linear-gradient(135deg, #25d366, #128c7e);
             color: white;
             text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1em;
             transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            animation: whatsappPulse 2s infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5); }
         }
 
         .contact-btn-simple:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        .spots-left {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .spots-left strong {
+            color: #ff6b35;
+            font-size: 1.1em;
         }
 
         .thank-you-simple {
             text-align: center;
             margin-top: 40px;
-            font-size: 2em;
+            font-size: 2.5em;
             font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(135deg, #ff9800, #00ff88);
+            background: linear-gradient(135deg, #ff9800, #00ff88, #7c3aed);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* Materi Page */
@@ -1259,10 +1651,21 @@
                 font-size: 2.5em;
             }
 
-            .simple-price-item {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
+            .tryout-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .combo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .combo-card.featured {
+                order: -1;
+            }
+
+            .urgency-banner {
+                font-size: 0.85em;
+                padding: 12px 20px;
             }
         }
 
@@ -1281,21 +1684,32 @@
             }
 
             .payment-icon-box {
-                width: 60px;
-                height: 60px;
-                font-size: 0.7em;
+                width: 70px;
+                height: 70px;
+                font-size: 0.8em;
             }
 
-            .simple-price-item {
-                padding: 20px;
+            .tryout-grid {
+                grid-template-columns: 1fr;
             }
 
-            .price-name {
-                font-size: 0.95em;
+            .tryout-card.popular,
+            .tryout-card.best-value {
+                transform: scale(1);
             }
 
-            .price-value {
-                font-size: 1.3em;
+            .combo-price-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .guarantee-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .guarantee-text {
+                text-align: center;
             }
 
             .sun {
@@ -1382,7 +1796,7 @@
             <div class="bubble-card detail-bubble" onclick="showPage('detail-harga')">
                 <div class="bubble-glow"></div>
                 <i class="fas fa-tags"></i>
-                <h2>Detail Harga<br>Pelatihan Intensif & Try Out</h2>
+                <h2>Detail Harga<br></h2>
                 <p>Daftar Harga Lengkap</p>
             </div>
 
@@ -1396,98 +1810,234 @@
         </div>
     </div>
 
-    <!-- DETAIL HARGA PAGE -->
-    <div id="detail-harga-page" class="page-section">
-        <div class="page-content">
-            <button class="back-btn" onclick="showPage('home')">
-                <i class="fas fa-arrow-left"></i> Kembali
-            </button>
+<!-- DETAIL HARGA PAGE - MARKETING OPTIMIZED -->
+<div id="detail-harga-page" class="page-section">
+    <div class="page-content">
+        <button class="back-btn" onclick="showPage('home')">
+            <i class="fas fa-arrow-left"></i> Kembali
+        </button>
 
-            <div class="pricing-header">
-                <h2>📋 Detail Harga</h2>
-                <p>Pelatihan Intensif & Try Out</p>
+        <!-- Urgency Banner -->
+        <div class="urgency-banner">
+            <i class="fas fa-fire"></i>
+            <span>🔥 PROMO SPESIAL: Harga Terjangkau untuk OSN 2026! Kuota Terbatas!</span>
+            <i class="fas fa-fire"></i>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="social-proof-bar">
+            <i class="fas fa-users"></i>
+            <i class="fas fa-star" style="color: #ff9800;"></i>
+            <span>Rating <strong>4.9/5</strong> dari peserta</span>
+        </div>
+
+        <div class="pricing-header">
+            <h2>💎 Detail Harga</h2> <!-- Diubah dari "Pilih Paket Terbaikmu" -->
+            <p>Investasi terbaik untuk persiapan OSN Matematika 2026</p>
+        </div>
+
+        <!-- TRY OUT SECTION -->
+        <div style="margin-bottom: 20px;">
+            <span class="section-label">📝 Paket Try Out</span>
+        </div>
+        
+        <div class="tryout-grid">
+            <!-- 1x Try Out -->
+            <div class="tryout-card">
+                <div class="tryout-count">1x Try Out</div>
+                <div class="price-display">
+                    <span class="original-price">Rp15.000</span>
+                    <span class="current-price">Rp10.000</span>
+                </div>
+                <div class="per-session">Rp10.000/sesi</div>
+                <div class="savings-badge" style="opacity: 0;">-</div>
             </div>
 
-            <!-- Bagian Try Out -->
-            <div class="simple-price-list">
-                <div class="simple-price-item">
-                    <span class="price-name">Sekali Try Out</span>
-                    <span class="price-value">Rp10.000</span>
+            <!-- 2x Try Out - POPULAR -->
+            <div class="tryout-card popular">
+                <div class="tryout-count">2x Try Out</div>
+                <div class="price-display">
+                    <span class="original-price">Rp30.000</span>
+                    <span class="current-price">Rp20.000</span>
                 </div>
-                <div class="simple-price-item">
-                    <span class="price-name">Dua Kali Try Out</span>
-                    <span class="price-value">Rp20.000</span>
-                </div>
-                <div class="simple-price-item">
-                    <span class="price-name">Tiga Kali Try Out</span>
-                    <span class="price-value">Rp30.000</span>
-                </div>
-                <div class="simple-price-item">
-                    <span class="price-name">Empat Kali Try Out</span>
-                    <span class="price-value">Rp40.000</span>
-                </div>
-                <div class="simple-price-item">
-                    <span class="price-name">Lima Kali Try Out</span>
-                    <span class="price-value">Rp50.000</span>
-                </div>
+                <div class="per-session">Rp10.000/sesi</div>
+                <div class="savings-badge">Hemat Rp10.000</div>
             </div>
 
-            <div class="section-divider">
-                <span>Paket Combo</span>
+            <!-- 3x Try Out -->
+            <div class="tryout-card">
+                <div class="tryout-count">3x Try Out</div>
+                <div class="price-display">
+                    <span class="original-price">Rp45.000</span>
+                    <span class="current-price">Rp30.000</span>
+                </div>
+                <div class="per-session">Rp10.000/sesi</div>
+                <div class="savings-badge">Hemat Rp15.000</div>
             </div>
 
-            <!-- Bagian Pelatihan Intensif -->
-            <div class="simple-price-list">
-                <div class="simple-price-item combo">
-                    <span class="price-name">Pelatihan Intensif</span>
-                    <span class="price-value">Rp35.000/bulan</span>
+            <!-- 5x Try Out - BEST VALUE -->
+            <div class="tryout-card best-value">
+                <div class="tryout-count">5x Try Out</div>
+                <div class="price-display">
+                    <span class="original-price">Rp75.000</span>
+                    <span class="current-price">Rp50.000</span>
                 </div>
-                <div class="simple-price-item combo">
-                    <span class="price-name">Pelatihan Intensif + Sekali Try Out</span>
-                    <span class="price-value">Rp40.000/bulan</span>
-                </div>
-                <div class="simple-price-item combo">
-                    <span class="price-name">Pelatihan Intensif + Dua Kali Try Out</span>
-                    <span class="price-value">Rp45.000/bulan</span>
-                </div>
-                <div class="simple-price-item combo">
-                    <span class="price-name">Pelatihan Intensif + Tiga Kali Try Out</span>
-                    <span class="price-value">Rp50.000/bulan</span>
-                </div>
-                <div class="simple-price-item combo">
-                    <span class="price-name">Pelatihan Intensif + Empat Kali Try Out</span>
-                    <span class="price-value">Rp55.000/bulan</span>
-                </div>
-                <div class="simple-price-item combo">
-                    <span class="price-name">Pelatihan Intensif + Lima Kali Try Out</span>
-                    <span class="price-value">Rp60.000/bulan</span>
-                </div>
+                <div class="per-session">Rp10.000/sesi</div>
+                <div class="savings-badge">⭐ HEMAT TERBANYAK!</div>
+            </div>
+        </div>
+
+        <!-- COMBO SECTION -->
+        <div class="combo-section">
+            <div class="combo-header">
+                <div class="combo-title">🚀 Paket Combo Spesial</div>
+                <div class="combo-subtitle">Pelatihan Intensif + Try Out = Persiapan Sempurna!</div>
             </div>
 
-            <div class="pricing-note-simple">
-                <strong>Catatan:</strong> Try Out dibayar per Try Out. Setiap try out dipastikan soalnya berbeda dengan try out lainnya, dan try out sudah sesuai dengan panduan resmi dari Puspresnas (10 pilihan ganda dan 10 isian singkat).<br><br>
-                Pelatihan Intensif dibayar per bulan. Untuk harga try out dalam paket combo, harga try out menjadi Rp5.000 per try out (hemat Rp5.000!).
-            </div>
+            <div class="combo-grid">
+                <!-- Basic Combo -->
+                <div class="combo-card">
+                    <div class="combo-name">Starter Pack</div>
+                    <div class="value-breakdown">
+                        <div class="value-row">
+                            <span>Pelatihan Intensif</span>
+                            <span>Rp35.000</span>
+                        </div>
+                        <div class="value-row">
+                            <span>+ 1x Try Out</span>
+                            <span>Rp10.000</span>
+                        </div>
+                        <div class="value-row">
+                            <span>Total Nilai</span>
+                            <span>Rp45.000</span>
+                        </div>
+                    </div>
+                    <div class="combo-price-row">
+                        <span class="combo-original">Rp45.000</span>
+                        <span class="combo-current">Rp40.000</span>
+                        <span class="combo-period">/bulan</span>
+                    </div>
+                    <div class="you-save">
+                        <i class="fas fa-piggy-bank"></i> Hemat Rp5.000
+                    </div>
+                    <ul class="features-list">
+                        <li>Akses materi lengkap</li>
+                        <li>1x simulasi try out</li>
+                        <li>Grup diskusi WhatsApp</li>
+                    </ul>
+                    <button class="cta-button" onclick="window.open('https://chat.whatsapp.com/Eo8LkcddMgG3oWKGc9F9CE', '_blank')">Pilih Paket</button>
+                </div>
 
-            <div class="payment-section-simple">
-                <div class="payment-title-simple">Metode Pembayaran</div>
-                <div class="payment-icons-row">
-                    <div class="payment-icon-box ovo">OVO</div>
-                    <div class="payment-icon-box dana">DANA</div>
-                    <div class="payment-icon-box gopay">GoPay</div>
+                <!-- Featured Combo - BEST VALUE -->
+                <div class="combo-card featured">
+                    <div class="combo-name">Champion Pack ⭐</div>
+                    <div class="value-breakdown">
+                        <div class="value-row">
+                            <span>Pelatihan Intensif</span>
+                            <span>Rp35.000</span>
+                        </div>
+                        <div class="value-row">
+                            <span>+ 3x Try Out</span>
+                            <span>Rp30.000</span>
+                        </div>
+                        <div class="value-row">
+                            <span>Total Nilai</span>
+                            <span>Rp65.000</span>
+                        </div>
+                    </div>
+                    <div class="combo-price-row">
+                        <span class="combo-original">Rp65.000</span>
+                        <span class="combo-current">Rp50.000</span>
+                        <span class="combo-period">/bulan</span>
+                    </div>
+                    <div class="you-save">
+                        <i class="fas fa-piggy-bank"></i> Hemat Rp15.000 (23%)
+                    </div>
+                    <ul class="features-list">
+                        <li>Akses materi lengkap</li>
+                        <li>3x simulasi try out</li>
+                        <li>Grup diskusi eksklusif</li>
+                        <li>Feedback personal</li>
+                        <li>Prioritas tanya jawab</li>
+                    </ul>
+                    <button class="cta-button" onclick="window.open('https://chat.whatsapp.com/Eo8LkcddMgG3oWKGc9F9CE', '_blank')">Pilih Paket Terbaik</button>
+                </div>
+
+                <!-- Ultimate Combo -->
+                <div class="combo-card">
+                    <div class="combo-name">Master Pack 🏆</div>
+                    <div class="value-breakdown">
+                        <div class="value-row">
+                            <span>Pelatihan Intensif</span>
+                            <span>Rp35.000</span>
+                        </div>
+                        <div class="value-row">
+                            <span>+ 5x Try Out</span>
+                            <span>Rp50.000</span>
+                        </div>
+                        <div class="value-row">
+                            <span>Total Nilai</span>
+                            <span>Rp85.000</span>
+                        </div>
+                    </div>
+                    <div class="combo-price-row">
+                        <span class="combo-original">Rp85.000</span>
+                        <span class="combo-current">Rp60.000</span>
+                        <span class="combo-period">/bulan</span>
+                    </div>
+                    <div class="you-save">
+                        <i class="fas fa-piggy-bank"></i> Hemat Rp25.000 (29%)
+                    </div>
+                    <ul class="features-list">
+                        <li>Akses materi lengkap</li>
+                        <li>5x simulasi try out</li>
+                        <li>Grup diskusi eksklusif</li>
+                        <li>Feedback personal</li>
+                        <li>Prioritas tanya jawab</li>
+                        <li>Bonus tips & trik OSN</li>
+                    </ul>
+                    <button class="cta-button" onclick="window.open('https://chat.whatsapp.com/Eo8LkcddMgG3oWKGc9F9CE', '_blank')">Pilih Paket</button>
                 </div>
             </div>
+        </div>
 
-            <div class="contact-section-simple">
-                <p>Untuk mendaftar, silakan kirim pesan langsung (DM) melalui WhatsApp atau chat di grup WA!</p>
-                <a href="https://chat.whatsapp.com/Eo8LkcddMgG3oWKGc9F9CE" target="_blank" class="contact-btn-simple">
-                    <i class="fab fa-whatsapp"></i> Hubungi Kami
+        <!-- Payment Section - NOW CLICKABLE -->
+        <div class="payment-section-simple">
+            <div class="payment-title-simple">💳 Metode Pembayaran Aman & Mudah</div>
+            <div class="payment-icons-row">
+                <a href="https://chat.whatsapp.com/Eo8LkcddMgG3oWKGc9F9CE" target="_blank" class="payment-icon-box ovo" style="text-decoration: none; cursor: pointer;">
+                    OVO
+                </a>
+                <a href="https://chat.whatsapp.com/Eo8LkcddMgG3oWKGc9F9CE" target="_blank" class="payment-icon-box dana" style="text-decoration: none; cursor: pointer;">
+                    DANA
+                </a>
+                <a href="https://chat.whatsapp.com/Eo8LkcddMgG3oWKGc9F9CE" target="_blank" class="payment-icon-box gopay" style="text-decoration: none; cursor: pointer;">
+                    GoPay
                 </a>
             </div>
-
-            <div class="thank-you-simple">Terima Kasih!</div>
+            <div class="secure-badge">
+                <i class="fas fa-lock"></i>
+                <span>Klik metode pembayaran untuk konfirmasi pemesanan</span>
+            </div>
         </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section-simple">
+            <div class="contact-content">
+                <p>🎯 Jangan Lewatkan Kesempatan Emas Ini!<br>
+                <span style="font-size: 0.9em; color: rgba(255,255,255,0.8);">Ratusan siswa sudah memulai persiapannya. Giliranmu sekarang!</span></p>
+                <a href="https://chat.whatsapp.com/Eo8LkcddMgG3oWKGc9F9CE" target="_blank" class="contact-btn-simple">
+                    <i class="fab fa-whatsapp"></i> Daftar Sekarang via WhatsApp
+                </a>
+                <div class="spots-left">
+                    ⚡ <strong>12 slot</strong> tersisa untuk batch bulan ini
+                </div>
+            </div>
+        </div>
+
+        <div class="thank-you-simple">Siap Juara OSN 2026? 🏆</div>
     </div>
+</div>
 
     <!-- MATERI OSN PAGE -->
     <div id="materi-page" class="page-section">
@@ -1662,7 +2212,7 @@
                             <td>Seleksi tingkat provinsi (OSN-P)</td>
                             <td>Tempat ditentukan Dinas Pendidikan Provinsi</td>
                             <td>Puspresnas dan Dinas Pendidikan Provinsi</td>
-                            <td>27 s.d. 29 Juli 2026</td>
+                            <td>27 s.d 29 Juli 2026</td>
                         </tr>
                         <tr class="highlight-row">
                             <td>6</td>
