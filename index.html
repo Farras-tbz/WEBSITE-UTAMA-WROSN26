@@ -214,6 +214,8 @@
             transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             padding-top: 80px;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
         .sidebar.open { left: 0; }
         .sidebar-overlay {
@@ -280,6 +282,39 @@
         .coming-soon {
             opacity: 0.7;
             font-style: italic;
+        }
+
+        /* Back to home button in sidebar */
+        .sidebar-footer {
+            margin-top: auto;
+            padding: 20px 15px 30px;
+        }
+        .back-home-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .back-home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+        .back-home-btn svg {
+            width: 20px; height: 20px;
+            stroke: #fff;
+            stroke-width: 2;
+            fill: none;
         }
 
         /* ========== SECTIONS ========== */
@@ -488,7 +523,90 @@
         }
         .wa-big-btn svg { width: 28px; height: 28px; fill: white; }
 
-        /* ========== MENU HARGA ========== */
+        /* ========== MENU HARGA GRID ========== */
+        .harga-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+            padding: 0 10px;
+        }
+        .harga-box {
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        .harga-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.5);
+        }
+        .harga-box-active {
+            background: linear-gradient(135deg, rgba(102,126,234,0.4) 0%, rgba(118,75,162,0.4) 100%);
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+        .harga-box-active:hover {
+            background: linear-gradient(135deg, rgba(102,126,234,0.6) 0%, rgba(118,75,162,0.6) 100%);
+        }
+        .harga-box-disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .harga-box-disabled:hover {
+            transform: none;
+            border-color: rgba(255,255,255,0.25);
+        }
+        .harga-box-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .harga-box-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+        }
+        .harga-box-desc {
+            font-size: 12px;
+            opacity: 0.8;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        .harga-detail {
+            animation: fadeInSection 0.4s ease;
+        }
+        .harga-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        }
+        .harga-back-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateX(-3px);
+        }
+        .harga-back-btn svg {
+            width: 16px; height: 16px;
+        }
+
+        /* ========== MENU HARGA TABLE ========== */
         .harga-table {
             width: 100%;
             border-collapse: collapse;
@@ -586,14 +704,29 @@
             z-index: 1000;
             transition: transform 0.3s ease, filter 0.3s ease;
             cursor: pointer;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            width: 55px; height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 0 3px rgba(255,255,255,0.1);
+            text-decoration: none;
         }
         .bottom-left-logo:hover {
             transform: scale(1.15);
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+            background: rgba(0,0,0,0.8);
+            border-color: rgba(255,255,255,0.6);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.5), 0 0 15px rgba(255,255,255,0.3);
         }
-        .bottom-left-logo svg {
-            width: 45px; height: 45px;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+        .bottom-left-logo .logo-icon {
+            width: 28px; height: 28px;
+            filter: drop-shadow(0 1px 3px rgba(0,0,0,0.5));
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .bottom-right-logo {
             position: fixed;
@@ -601,11 +734,29 @@
             z-index: 1000;
             transition: transform 0.3s ease;
             cursor: pointer;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            width: 55px; height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 0 3px rgba(255,255,255,0.1);
+            text-decoration: none;
         }
-        .bottom-right-logo:hover { transform: scale(1.15); }
-        .bottom-right-logo svg {
-            width: 50px; height: 50px;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+        .bottom-right-logo:hover {
+            transform: scale(1.15);
+            background: rgba(0,0,0,0.8);
+            border-color: rgba(255,255,255,0.6);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.5), 0 0 15px rgba(37,211,102,0.3);
+        }
+        .bottom-right-logo .logo-icon {
+            width: 32px; height: 32px;
+            filter: drop-shadow(0 1px 3px rgba(0,0,0,0.5));
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* RESPONSIVE */
@@ -711,6 +862,14 @@
                 <div class="menu-link" onclick="showSection('harga'); toggleSidebar();">📋 Menu Harga OSN</div>
             </div>
         </div>
+
+        <!-- BACK TO HOME BUTTON -->
+        <div class="sidebar-footer">
+            <div class="back-home-btn" onclick="showSection('home'); toggleSidebar();">
+                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                Pencet Untuk Kembali Ke Website Utama
+            </div>
+        </div>
     </div>
 
     <!-- ==================== HOME SECTION ==================== -->
@@ -721,25 +880,28 @@
             <div class="time-indicator" id="timeIndicator">🌅 PAGI</div>
         </div>
 
+        <!-- TIKTOK LOGO -->
         <a href="https://tiktok.com/@wrosify" target="_blank" class="bottom-left-logo" title="TikTok @wrosify">
-            <svg viewBox="0 0 50 50" fill="white">
-                <path d="M36.5 10.5c-1.5 0-2.9.4-4.1 1.1-1.2.7-2.2 1.7-2.9 2.9-.7 1.2-1.1 2.6-1.1 4.1v15.8c0 1.1-.2 2.2-.7 3.2-.5 1-1.1 1.8-2 2.5-.8.7-1.8 1.2-2.8 1.5-1.1.3-2.2.3-3.3 0-1.1-.3-2.1-.8-2.9-1.5-.8-.7-1.5-1.5-2-2.5-.5-1-.7-2.1-.7-3.2 0-1.1.2-2.2.7-3.2.5-1 1.1-1.8 2-2.5.8-.7 1.8-1.2 2.9-1.5 1.1-.3 2.2-.3 3.3 0V19.5c-1.5-.3-3-.2-4.4.3-1.4.5-2.6 1.3-3.6 2.4-1 1.1-1.7 2.4-2.1 3.8-.4 1.4-.5 2.9-.2 4.3.3 1.5.9 2.8 1.8 4 1 1.2 2.2 2.1 3.6 2.7 1.4.6 3 1 4.5.9 1.5 0 3-.4 4.3-1.1 1.3-.7 2.4-1.7 3.3-2.9.8-1.2 1.4-2.6 1.7-4.1.3-1.5.3-3 0-4.4V10.5h-4.5z"/>
-                <path d="M36.5 2.5h4.5v8h-4.5z" opacity="0.3"/>
-                <circle cx="38.5" cy="6.5" r="2" opacity="0.5"/>
-            </svg>
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.88-2.89 2.89 2.89 0 0 1 2.88-2.89c.2 0 .39.03.58.07V9.2a6.33 6.33 0 0 0-.58-.03A6.34 6.34 0 0 0 5.77 15.5a6.34 6.34 0 0 0 6.34 6.33 6.34 6.34 0 0 0 6.33-6.33V9.91a8.5 8.5 0 0 0 4.97 1.6V8.07a4.92 4.92 0 0 1-3.82-1.38z"/>
+                </svg>
+            </div>
         </a>
 
+        <!-- WA LOGO -->
         <a href="https://wa.me/6281234567890" target="_blank" class="bottom-right-logo" title="WhatsApp">
-            <svg viewBox="0 0 50 50" fill="none">
-                <circle cx="25" cy="25" r="23" fill="#25D366"/>
-                <path d="M25 12c-7.2 0-13 5.8-13 13 0 2.3.6 4.5 1.7 6.4L12 38l6.8-1.8c1.8.9 3.8 1.4 5.9 1.4h.3c7.2 0 13.1-5.8 13.1-13S32.3 12 25 12zm7.3 18.2c-.3.9-1.7 1.6-2.4 1.7-.6.1-1.2.1-1.7-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-3.9-.1-.1-.7-.9-.7-1.8 0-.8.4-1.2.6-1.4.2-.2.4-.2.5-.2h.4c.1 0 .3 0 .4.3.2.3.6 1 .7 1.2.1.1.1.3 0 .4-.1.1-.1.2-.3.3-.1.1-.3.2-.4.3-.1.1-.2.1-.3.2-.1.1-.2.2-.1.4.3.5.7.9 1.2 1.3.5.4 1.1.7 1.7.9.2.1.4 0 .5-.1.1-.1.6-.7.8-.9.2-.2.3-.2.5-.1.2 0 .9.4 1.1.6.2.1.3.2.4.3.1.1 0 .3-.1.5z" fill="white"/>
-            </svg>
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="white" width="32" height="32">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+            </div>
         </a>
     </div>
 
     <!-- ==================== HITUNG RATA-RATA SECTION ==================== -->
     <div class="section" id="section-hitung">
-        <h1 class="page-title">📊 Hitung Rata-rata</h1>
+        <h1 class="page-title"> Hitung Rata-rata</h1>
         <div class="page-card">
             <div id="nilaiContainer">
                 <div class="input-group">
@@ -767,21 +929,20 @@
 
     <!-- ==================== JOKI TUGAS SECTION ==================== -->
     <div class="section" id="section-joki">
-        <h1 class="page-title">📝 Joki Tugas</h1>
+        <h1 class="page-title"> Joki Tugas</h1>
         <div class="page-card" style="text-align: center; max-width: 500px;">
             <p class="joki-text">
                 Butuh bantuan untuk mengerjakan tugas sekolah?<br>
                 Wrosify siap membantu berbagai mata pelajaran!
             </p>
             <div class="joki-highlight">
-                Butuh Joki? Langsung WA yaa! (Klik LOGO WA)
-    
+                Butuh Joki Tugas? Gas pencet Logo WA!
             </div>
             <p class="joki-text" style="font-size: 14px; opacity: 0.85;">
                 Matematika • Fisika • Kimia • Biologi • Bahasa Inggris • Dan lainnya
             </p>
             <a href="https://wa.me/6281234567890" target="_blank" class="wa-big-btn">
-                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 Chat WhatsApp
             </a>
         </div>
@@ -789,8 +950,41 @@
 
     <!-- ==================== MENU HARGA SECTION ==================== -->
     <div class="section" id="section-harga">
-        <h1 class="page-title">💰 Menu Harga OSN</h1>
-        <div class="page-card" style="max-width: 700px;">
+        <h1 class="page-title"> Menu Harga</h1>
+
+        <!-- GRID 4 KOTAK -->
+        <div class="harga-grid" id="hargaGrid">
+            <div class="harga-box harga-box-active" onclick="showHargaDetail('osn')">
+                <div class="harga-box-icon"></div>
+                <div class="harga-box-title">Try Out OSN</div>
+                <div class="harga-box-desc">Klik untuk lihat harga</div>
+            </div>
+            <div class="harga-box harga-box-disabled">
+                <div class="harga-box-icon">⏳</div>
+                <div class="harga-box-title">COMING SOON!</div>
+                <div class="harga-box-desc">Segera hadir</div>
+            </div>
+            <div class="harga-box harga-box-disabled">
+                <div class="harga-box-icon">⏳</div>
+                <div class="harga-box-title">COMING SOON!</div>
+                <div class="harga-box-desc">Segera hadir</div>
+            </div>
+            <div class="harga-box harga-box-disabled">
+                <div class="harga-box-icon">⏳</div>
+                <div class="harga-box-title">COMING SOON!</div>
+                <div class="harga-box-desc">Segera hadir</div>
+            </div>
+        </div>
+
+        <!-- DETAIL HARGA OSN (hidden dulu) -->
+        <div class="page-card harga-detail" id="hargaDetailOSN" style="display:none; max-width: 700px; margin-top: 20px;">
+            <div class="harga-detail-header">
+                <button class="harga-back-btn" onclick="backToHargaGrid()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                    Kembali
+                </button>
+                <h2 style="text-align:center; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,0.6); margin-bottom:20px;">🏆 Menu Harga OSN</h2>
+            </div>
             <table class="harga-table">
                 <thead>
                     <tr>
@@ -838,10 +1032,10 @@
                 </tbody>
             </table>
             <div class="harga-note">
-                💡 <strong>Catatan:</strong> Harga di atas sudah termasuk akses selamanya. Pembayaran via QRIS ataupun Transfer.
+                 <strong>Catatan:</strong> Harga di atas sudah termasuk akses selamanya. Pembayaran via transfer atau QRIS.
             </div>
             <a href="https://wa.me/6281234567890?text=Halo%20Wrosify!%20Saya%20ingin%20pesan%20Try%20Out%20OSN" target="_blank" class="harga-wa">
-                📲 Pesan via WhatsApp
+                 Pesan via WhatsApp
             </a>
         </div>
     </div>
@@ -849,7 +1043,7 @@
     <!-- ==================== COMING SOON SECTIONS ==================== -->
     <div class="section" id="section-tka">
         <div class="coming-container">
-            <div class="coming-icon">🎯</div>
+            <div class="coming-icon"></div>
             <div class="coming-title">Bagian TKA</div>
             <div class="coming-text">COMING SOON! Stay tuned untuk update terbaru.</div>
         </div>
@@ -857,7 +1051,7 @@
 
     <div class="section" id="section-snbt">
         <div class="coming-container">
-            <div class="coming-icon">🎓</div>
+            <div class="coming-icon"></div>
             <div class="coming-title">Bagian SNBT</div>
             <div class="coming-text">COMING SOON! Stay tuned untuk update terbaru.</div>
         </div>
@@ -933,6 +1127,18 @@
                 target.classList.add('active');
                 window.scrollTo(0, 0);
             }
+        }
+
+        // ========== HARGA DETAIL TOGGLE ==========
+        function showHargaDetail(type) {
+            if (type === 'osn') {
+                document.getElementById('hargaGrid').style.display = 'none';
+                document.getElementById('hargaDetailOSN').style.display = 'block';
+            }
+        }
+        function backToHargaGrid() {
+            document.getElementById('hargaGrid').style.display = 'grid';
+            document.getElementById('hargaDetailOSN').style.display = 'none';
         }
 
         // ========== HITUNG RATA-RATA ==========
