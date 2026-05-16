@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com;">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Utama - Wrosify</title>
@@ -537,12 +541,17 @@
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255,255,255,0.25);
             border-radius: 20px;
-            padding: 30px 20px;
+            padding: 50px 20px 30px;
             text-align: center;
             color: #fff;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
         }
         .harga-box:hover {
             transform: translateY(-5px);
@@ -817,49 +826,49 @@
     <div class="sidebar" id="sidebar">
         <div class="menu-item">
             <div class="menu-header" onclick="toggleDropdown(this)">
-                <span>📚 Bagian Akademik</span>
+                <span>Bagian Akademik</span>
                 <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="submenu">
-                <div class="menu-link" onclick="showSection('hitung'); toggleSidebar();">📊 Hitung Rata-rata</div>
-                <div class="menu-link" onclick="showSection('joki'); toggleSidebar();">📝 Joki Tugas</div>
+                <div class="menu-link" onclick="showSection('hitung'); toggleSidebar();">Hitung Rata-rata</div>
+                <div class="menu-link" onclick="showSection('joki'); toggleSidebar();">Joki Tugas</div>
             </div>
         </div>
         <div class="menu-item">
             <div class="menu-header" onclick="toggleDropdown(this)">
-                <span>🎯 Bagian TKA</span>
+                <span>Bagian TKA</span>
                 <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="submenu">
-                <div class="menu-link coming-soon" onclick="showSection('tka'); toggleSidebar();">⏳ COMING SOON!</div>
+                <div class="menu-link coming-soon" onclick="showSection('tka'); toggleSidebar();">COMING SOON!</div>
             </div>
         </div>
         <div class="menu-item">
             <div class="menu-header" onclick="toggleDropdown(this)">
-                <span>🎓 Bagian SNBT</span>
+                <span>Bagian SNBT</span>
                 <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="submenu">
-                <div class="menu-link coming-soon" onclick="showSection('snbt'); toggleSidebar();">⏳ COMING SOON!</div>
+                <div class="menu-link coming-soon" onclick="showSection('snbt'); toggleSidebar();">COMING SOON!</div>
             </div>
         </div>
         <div class="menu-item">
             <div class="menu-header" onclick="toggleDropdown(this)">
-                <span>🏆 Bagian OSN</span>
+                <span>Bagian OSN</span>
                 <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="submenu">
-                <a href="https://farras-tbz.github.io/Web-TryOut-1/" target="_blank">📝 Try Out (1, 2, 3, 4, 5)</a>
-                <a href="https://farras-tbz.github.io/Web-TryOut-1/" target="_blank">🏅 Try Out AKBAR</a>
+                <a href="https://farras-tbz.github.io/Web-TryOut-1/" target="_blank">Try Out (1, 2, 3, 4, 5)</a>
+                <a href="https://farras-tbz.github.io/Web-TryOut-1/" target="_blank">Try Out AKBAR</a>
             </div>
         </div>
         <div class="menu-item">
             <div class="menu-header" onclick="toggleDropdown(this)">
-                <span>💰 Menu Harga</span>
+                <span>Menu Harga</span>
                 <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="submenu">
-                <div class="menu-link" onclick="showSection('harga'); toggleSidebar();">📋 Menu Harga OSN</div>
+                <div class="menu-link" onclick="showSection('harga'); toggleSidebar();">Menu Harga OSN</div>
             </div>
         </div>
 
@@ -867,7 +876,7 @@
         <div class="sidebar-footer">
             <div class="back-home-btn" onclick="showSection('home'); toggleSidebar();">
                 <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-                Pencet Untuk Kembali Ke Website Utama
+                Kembali Ke Website Utama
             </div>
         </div>
     </div>
@@ -901,7 +910,7 @@
 
     <!-- ==================== HITUNG RATA-RATA SECTION ==================== -->
     <div class="section" id="section-hitung">
-        <h1 class="page-title"> Hitung Rata-rata</h1>
+        <h1 class="page-title">Hitung Rata-rata</h1>
         <div class="page-card">
             <div id="nilaiContainer">
                 <div class="input-group">
@@ -918,7 +927,7 @@
                 </div>
             </div>
             <button class="add-nilai-btn" onclick="tambahNilai()">+ Tambah Nilai</button>
-            <button class="btn" onclick="hitungRataRata()">🧮 Hitung Rata-rata</button>
+            <button class="btn" onclick="hitungRataRata()">Hitung Rata-rata</button>
             <div class="result-box" id="resultBox">
                 <div class="result-value" id="resultValue">0</div>
                 <div class="result-label">Rata-rata Nilai</div>
@@ -929,14 +938,14 @@
 
     <!-- ==================== JOKI TUGAS SECTION ==================== -->
     <div class="section" id="section-joki">
-        <h1 class="page-title"> Joki Tugas</h1>
+        <h1 class="page-title">Joki Tugas</h1>
         <div class="page-card" style="text-align: center; max-width: 500px;">
             <p class="joki-text">
                 Butuh bantuan untuk mengerjakan tugas sekolah?<br>
-                Wrosify siap membantu berbagai mata pelajaran!
+                Tim Wrosify siap membantu berbagai mata pelajaran!
             </p>
             <div class="joki-highlight">
-                Butuh Joki Tugas? Gas pencet Logo WA!
+                KLIK LOGO WA UNTUK JOKI TUGAS
             </div>
             <p class="joki-text" style="font-size: 14px; opacity: 0.85;">
                 Matematika • Fisika • Kimia • Biologi • Bahasa Inggris • Dan lainnya
@@ -950,12 +959,12 @@
 
     <!-- ==================== MENU HARGA SECTION ==================== -->
     <div class="section" id="section-harga">
-        <h1 class="page-title"> Menu Harga</h1>
+        <h1 class="page-title">Menu Harga</h1>
 
         <!-- GRID 4 KOTAK -->
         <div class="harga-grid" id="hargaGrid">
             <div class="harga-box harga-box-active" onclick="showHargaDetail('osn')">
-                <div class="harga-box-icon"></div>
+                <div class="harga-box-icon">🏆</div>
                 <div class="harga-box-title">Try Out OSN</div>
                 <div class="harga-box-desc">Klik untuk lihat harga</div>
             </div>
@@ -983,7 +992,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
                     Kembali
                 </button>
-                <h2 style="text-align:center; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,0.6); margin-bottom:20px;">🏆 Menu Harga OSN</h2>
+                <h2 style="text-align:center; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,0.6); margin-bottom:20px;">Menu Harga OSN</h2>
             </div>
             <table class="harga-table">
                 <thead>
@@ -1032,10 +1041,10 @@
                 </tbody>
             </table>
             <div class="harga-note">
-                 <strong>Catatan:</strong> Harga di atas sudah termasuk akses selamanya. Pembayaran via transfer atau QRIS.
+                <strong>Catatan:</strong> Harga di atas sudah termasuk akses selamanya dan sertifikat digital. Pembayaran via transfer bank, e-wallet, atau QRIS.
             </div>
             <a href="https://wa.me/6281234567890?text=Halo%20Wrosify!%20Saya%20ingin%20pesan%20Try%20Out%20OSN" target="_blank" class="harga-wa">
-                 Pesan via WhatsApp
+                Pesan via WhatsApp
             </a>
         </div>
     </div>
@@ -1079,11 +1088,11 @@
         const timeIndicator = document.getElementById('timeIndicator');
 
         const phases = [
-            { name: '🌅 PAGI', class: 'sky-dawn', sun: 'sun-dawn', moon: 'moon-dawn', stars: '' },
-            { name: '☀️ SIANG', class: 'sky-morning', sun: 'sun-morning', moon: 'moon-morning', stars: '' },
-            { name: '🌞 SORE', class: 'sky-afternoon', sun: 'sun-afternoon', moon: 'moon-afternoon', stars: '' },
-            { name: '🌇 SORE HARI', class: 'sky-sunset', sun: 'sun-sunset', moon: 'moon-sunset', stars: '' },
-            { name: '🌙 MALAM', class: 'sky-night', sun: 'sun-night', moon: 'moon-night', stars: 'stars-night' }
+            { name: 'PAGI', class: 'sky-dawn', sun: 'sun-dawn', moon: 'moon-dawn', stars: '' },
+            { name: 'SIANG', class: 'sky-morning', sun: 'sun-morning', moon: 'moon-morning', stars: '' },
+            { name: 'SORE', class: 'sky-afternoon', sun: 'sun-afternoon', moon: 'moon-afternoon', stars: '' },
+            { name: 'SORE HARI', class: 'sky-sunset', sun: 'sun-sunset', moon: 'moon-sunset', stars: '' },
+            { name: 'MALAM', class: 'sky-night', sun: 'sun-night', moon: 'moon-night', stars: 'stars-night' }
         ];
 
         let currentPhase = 1;
@@ -1185,5 +1194,180 @@
             document.getElementById('resultBox').classList.add('show');
         }
     </script>
+
+    <!-- ========== ANTI INSPEKSI / ANTI COPY ========== -->
+    <script>
+    (function() {
+        'use strict';
+
+        // 1. Anti Right Click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        }, true);
+
+        // 2. Anti F12 (DevTools)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || e.keyCode === 123) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+
+        // 3. Anti Ctrl+Shift+I (Inspect Element)
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+
+        // 4. Anti Ctrl+U (View Source)
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'U' || e.key === 'u')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+
+        // 5. Anti Ctrl+S (Save Page)
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'S' || e.key === 's')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+
+        // 6. Anti Ctrl+P (Print)
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'P' || e.key === 'p')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+
+        // 7. Anti Ctrl+A (Select All)
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'A' || e.key === 'a')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+
+        // 8. Anti Ctrl+C (Copy)
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+
+        // 9. Anti Ctrl+X (Cut)
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'X' || e.key === 'x')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+
+        // 10. Anti select text
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        }, true);
+
+        // 11. Anti drag
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        }, true);
+
+        // 12. Anti copy event
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            return false;
+        }, true);
+
+        // 13. Anti cut event
+        document.addEventListener('cut', function(e) {
+            e.preventDefault();
+            return false;
+        }, true);
+
+        // 14. Anti paste event (di luar input)
+        document.addEventListener('paste', function(e) {
+            if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                return false;
+            }
+        }, true);
+
+        // 15. Debugger trap (membuat DevTools lambat)
+        setInterval(function() {
+            (function() {}.constructor('debugger')());
+        }, 100);
+
+        // 16. DevTools detection - window size
+        let devtoolsOpen = false;
+        const threshold = 160;
+
+        setInterval(function() {
+            const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+            const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+
+            if (widthThreshold || heightThreshold) {
+                if (!devtoolsOpen) {
+                    devtoolsOpen = true;
+                    document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;font-family:sans-serif;font-size:24px;text-align:center;padding:20px;">Akses Ditolak<br><span style="font-size:16px;opacity:0.7;margin-top:10px;display:block;">Developer Tools terdeteksi. Silakan tutup DevTools untuk melanjutkan.</span></div>';
+                }
+            } else {
+                devtoolsOpen = false;
+            }
+        }, 500);
+
+        // 17. DevTools detection - console.log timing
+        const element = new Image();
+        Object.defineProperty(element, 'id', {
+            get: function() {
+                document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;font-family:sans-serif;font-size:24px;text-align:center;padding:20px;">Akses Ditolak<br><span style="font-size:16px;opacity:0.7;margin-top:10px;display:block;">Developer Tools terdeteksi. Silakan tutup DevTools untuk melanjutkan.</span></div>';
+                throw new Error('DevTools detected');
+            }
+        });
+
+        setInterval(function() {
+            console.log('%c', element);
+        }, 1000);
+
+        // 18. Anti View Source via location
+        if (window.location.protocol === 'file:') {
+            document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;font-family:sans-serif;font-size:24px;text-align:center;padding:20px;">Akses Ditolak<br><span style="font-size:16px;opacity:0.7;margin-top:10px;display:block;">File tidak bisa dibuka secara lokal.</span></div>';
+        }
+
+        // 19. Obfuscate console
+        console.log = function() {};
+        console.warn = function() {};
+        console.error = function() {};
+        console.info = function() {};
+        console.debug = function() {};
+
+        // 20. Anti iframe embedding (clickjacking protection)
+        if (window.top !== window.self) {
+            window.top.location = window.self.location;
+        }
+
+        // 21. Disable source maps
+        //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlc0NvbnRlbnQiOlsiIl19
+
+    })();
+    </script>
+
 </body>
 </html>
