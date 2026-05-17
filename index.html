@@ -958,23 +958,221 @@
         <div class="menu-item">
             <div class="menu-header" onclick="toggleDropdown(this)">
                 <span>Bagian OSN</span>
-                <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="submenu">
-                <a href="https://farras-tbz.github.io/Web-TryOut-1/" target="_blank">Try Out (1, 2, 3, 4, 5) MATEMATIKA (SMP & SMA)</a>
-                <a href="https://farras-tbz.github.io/Web-TryOut-1/" target="_blank">Try Out AKBAR MATEMATIKA (SMP & SMA)</a>
-                <div class="menu-link" onclick="openDriveOsnModal(); toggleSidebar();">Drive OSN (Matematika (SMP&SMA))</div>
-            </div>
+                <<!-- ==================== BAGIAN OSN (VERSI BARU) ==================== -->
+<div class="menu-item">
+    <div class="menu-header" onclick="toggleDropdown(this)">
+        <span>Bagian OSN</span>
+        <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+        </svg>
+    </div>
+
+    <div class="submenu">
+
+        <!-- TRY OUT OSN -->
+        <div class="menu-link" onclick="showSection('osn'); toggleSidebar();">
+            Try Out OSN (1,2,3,4,5 &amp; TRY OUT AKBAR)
         </div>
-        <div class="menu-item">
-            <div class="menu-header" onclick="toggleDropdown(this)">
-                <span>Menu Harga</span>
-                <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="submenu">
-                <div class="menu-link" onclick="showSection('harga'); toggleSidebar();">Detail Harga</div>
-            </div>
+
+        <!-- DRIVE -->
+        <div class="menu-link" onclick="openDriveOsnModal(); toggleSidebar();">
+            Drive OSN (Matematika SMP &amp; SMA)
         </div>
+
+    </div>
+</div>
+
+
+
+<!-- ==================== SECTION TRY OUT OSN ==================== -->
+<div class="section" id="section-osn">
+
+    <h1 class="page-title">Try Out OSN</h1>
+
+    <div class="page-card osn-card">
+
+        <div class="osn-top-text">
+            Kumpulan preview Try Out OSN Wrosify
+        </div>
+
+        <div class="osn-gallery">
+
+            <!-- TO 1 -->
+            <div class="osn-item">
+                <img src="foto-to1.jpg" alt="Try Out 1">
+
+                <div class="osn-info">
+                    <div class="osn-title">
+                        Try Out 1
+                    </div>
+
+                    <div class="osn-desc">
+                        Bidang Matematika SMP &amp; SMA
+                    </div>
+                </div>
+            </div>
+
+            <!-- TO 2 -->
+            <div class="osn-item">
+                <img src="foto-to2.jpg" alt="Try Out 2">
+
+                <div class="osn-info">
+                    <div class="osn-title">
+                        Try Out 2
+                    </div>
+
+                    <div class="osn-desc">
+                        Bidang Matematika SMP &amp; SMA
+                    </div>
+                </div>
+            </div>
+
+            <!-- TO 3 -->
+            <div class="osn-item">
+                <img src="foto-to3.jpg" alt="Try Out 3">
+
+                <div class="osn-info">
+                    <div class="osn-title">
+                        Try Out 3
+                    </div>
+
+                    <div class="osn-desc">
+                        Bidang Matematika SMP &amp; SMA
+                    </div>
+                </div>
+            </div>
+
+            <!-- TO 4 -->
+            <div class="osn-item">
+                <img src="foto-to4.jpg" alt="Try Out 4">
+
+                <div class="osn-info">
+                    <div class="osn-title">
+                        Try Out 4
+                    </div>
+
+                    <div class="osn-desc">
+                        Bidang Matematika SMP &amp; SMA
+                    </div>
+                </div>
+            </div>
+
+            <!-- TO 5 -->
+            <div class="osn-item">
+                <img src="foto-to5.jpg" alt="Try Out 5">
+
+                <div class="osn-info">
+                    <div class="osn-title">
+                        Try Out 5
+                    </div>
+
+                    <div class="osn-desc">
+                        Bidang Matematika SMP &amp; SMA
+                    </div>
+                </div>
+            </div>
+
+            <!-- AKBAR -->
+            <div class="osn-item">
+                <img src="foto-akbar.jpg" alt="Try Out Akbar">
+
+                <div class="osn-info">
+                    <div class="osn-title">
+                        Try Out AKBAR
+                    </div>
+
+                    <div class="osn-desc">
+                        10 PG + 10 Isian
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================== CSS TAMBAHAN ==================== -->
+<style>
+
+.osn-card{
+    max-width:1100px;
+    padding:30px;
+}
+
+.osn-top-text{
+    text-align:center;
+    color:#fff;
+    font-size:15px;
+    margin-bottom:25px;
+    opacity:0.9;
+    text-shadow:0 1px 4px rgba(0,0,0,0.5);
+}
+
+.osn-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:22px;
+}
+
+.osn-item{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:18px;
+    overflow:hidden;
+    transition:0.3s ease;
+    box-shadow:0 8px 24px rgba(0,0,0,0.25);
+    backdrop-filter:blur(10px);
+}
+
+.osn-item:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 30px rgba(0,0,0,0.4);
+    border-color:rgba(255,255,255,0.35);
+}
+
+.osn-item img{
+    width:100%;
+    height:270px;
+    object-fit:cover;
+    display:block;
+    background:#111;
+}
+
+.osn-info{
+    padding:16px;
+}
+
+.osn-title{
+    color:#fff;
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:6px;
+    text-shadow:0 1px 4px rgba(0,0,0,0.5);
+}
+
+.osn-desc{
+    color:rgba(255,255,255,0.8);
+    font-size:13px;
+    line-height:1.5;
+}
+
+@media (max-width:768px){
+
+    .osn-gallery{
+        grid-template-columns:1fr;
+    }
+
+    .osn-item img{
+        height:240px;
+    }
+
+}
+
+</style>
 
         <!-- BACK TO HOME BUTTON -->
         <div class="sidebar-footer">
